@@ -10,7 +10,7 @@ first consider LED PART ESP TO ESP ( code of this esp )
         then we open a browser we give url as 192.168.4.1/1/y which turns ON led 
         if we give url as 192.168.4.1/1/n which turns OFF the led 
         
-        now we have above code working well and fine but here url is given by us we need it to be controlled by another esp so we programmed another one     
+ now we have above code working well and fine but here url is given by us we need it to be controlled by another esp so we programmed another one     
         
         
  CONTROL ESP ESP TO ESP( code for controlling esp connected to led's )

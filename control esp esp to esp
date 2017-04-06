@@ -1,0 +1,42 @@
+#include <ESP8266WiFi.h>
+#include <ESP8266WiFiMulti.h>
+#include <ESP8266HTTPClient.h>
+
+
+HTTPClient http;
+
+void setup(){
+    Serial.begin(115200);
+    WiFi.begin("Danjo", "Openadaa");
+     while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+}
+
+void httpCall (String url){
+  http.begin(url);
+  Serial.println(url);
+  Serial.println(http.GET());
+  http.end();
+}
+
+void turnOff(int ledToUse){
+  httpCall("http://198.168.4.1/" + (String)ledToUse +"/n");
+   Serial.println("off");
+}
+void turnOn(int ledToUse){
+  httpCall("http://198.168.4.1/" + (String)ledToUse +"/y");
+   Serial.println("on");
+}
+void loop(){
+    delay(100);
+    Serial.println("Running...");
+    turnOn(1);
+    turnOn(0);
+    delay(10000);
+    
+    turnOff(1);
+    turnOff(0);
+    delay(10000);
+}
